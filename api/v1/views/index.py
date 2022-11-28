@@ -25,8 +25,7 @@ def status():
 @app_views.route('/stats')
 def get_stats():
     """
-    Endpoint that retrieves the number of ojbects of each
-    type.
+    Endpoint retrieves number ojbects of each type.
     """
     class_lib = {}
     for name, clsname in classes.items():
