@@ -16,7 +16,7 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def teardown(junk):
     """
-    Removes current SQLAlchemy Session.
+    Removes the current SQLAlchemy Session
     """
     storage.close()
 
@@ -24,7 +24,7 @@ def teardown(junk):
 @app.errorhandler(404)
 def not_found(error):
     """
-    Return 404 error JSON string.
+    Returns the 404 error JSON string
     """
     return make_response(jsonify({"error": "Not found"}), 404)
 
