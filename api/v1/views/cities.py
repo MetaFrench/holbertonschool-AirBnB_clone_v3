@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""handles default RESTful API actions for City objects"""
+"""Handles default RESTful API actions for City objects."""
 from api.v1.views import app_views
 from flask import jsonify, request, abort, Flask, make_response
 from models import storage
@@ -10,7 +10,7 @@ from models.city import City
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
 def get_states_with_cities(state_id=None):
-    """Retrieves a state along with it's cities"""
+    """Retrieves a state along with it's cities."""
     state = storage.get(State, state_id)
     if state is None:
         abort(404)
@@ -20,7 +20,7 @@ def get_states_with_cities(state_id=None):
 @app_views.route('/cities/<city_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def city_get_or_delete(city_id=None):
-    """Retrieves a city or deletes a city"""
+    """Retrieves a city or deletes a city."""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
@@ -46,7 +46,7 @@ def city_get_or_delete(city_id=None):
 @app_views.route('/states/<state_id>/cities', methods=['POST'],
                  strict_slashes=False)
 def city_post(state_id=None):
-    """creates a city"""
+    """Creates a city"""
     city_data = request.get_json()
     state = storage.get(State, state_id)
     if state is None:
