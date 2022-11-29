@@ -8,13 +8,13 @@ from flask import abort, request, make_response, jsonify
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def users_get(user_id=None):
-    """returns all user objects"""
+    """Returns all user objects"""
     return jsonify([obj.to_dict() for obj in storage.all(User).values()])
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def user_post():
-    """creates a new user object"""
+    """Creates a new user object"""
     post_data = request.get_json()
     if post_data is None:
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
@@ -30,7 +30,7 @@ def user_post():
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 def user_get_one(user_id):
-    """returns specified user"""
+    """Returns specified user"""
     obj = storage.get(User, user_id)
     if obj is not None:
         return jsonify(obj.to_dict())
@@ -51,7 +51,7 @@ def user_delete(user_id):
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def user_put(user_id):
-    """updates a user object"""
+    """Updates a user object"""
     obj = storage.get(User, user_id)
     if obj is None:
         abort(404)
