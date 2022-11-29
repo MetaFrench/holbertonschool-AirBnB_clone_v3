@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""handles default RESTful API actions for State objects"""
+"""Handles default RESTful API actions for State objects"""
 from api.v1.views import app_views
 from flask import jsonify, request, abort, Flask, make_response
 from models import storage
@@ -10,7 +10,7 @@ from models.state import State
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def get_states(state_id=None):
-    """Retrieves a state, all states, or posts one"""
+    """Retrieves a state, all states, or posts one."""
     states = storage.all(State)
 
     if request.method == 'GET':
