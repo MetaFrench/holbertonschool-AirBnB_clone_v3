@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""handles default RESTful API actions for Place objects"""
+"""Handles default RESTful API actions for Place objects"""
 from api.v1.views import app_views
 from models import storage
 from models.place import Place
@@ -11,7 +11,7 @@ from flask import abort, request, make_response, jsonify
 @app_views.route('cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
 def get_city_place(city_id=None):
-    """retrives all places within a city"""
+    """Retrives all places within a city"""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
@@ -20,7 +20,7 @@ def get_city_place(city_id=None):
 
 @app_views.route('places/<place_id>', methods=['GET'], strict_slashes=False)
 def get_place(place_id=None):
-    """retrieves a place from id"""
+    """Retrieves a place from id"""
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
@@ -29,7 +29,7 @@ def get_place(place_id=None):
 
 @app_views.route('places/<place_id>', methods=['DELETE'], strict_slashes=False)
 def delete_place(place_id=None):
-    """deletes a place from its ID"""
+    """Deletes a place from its ID"""
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
@@ -41,7 +41,7 @@ def delete_place(place_id=None):
 @app_views.route('cities/<city_id>/places', methods=['POST'],
                  strict_slashes=False)
 def create_place(city_id=None):
-    """creates a place object"""
+    """Creates a place object"""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
