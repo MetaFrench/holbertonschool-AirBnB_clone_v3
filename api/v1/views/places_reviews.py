@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""handles default RESTful API actions for City objects"""
+"""Handles default RESTful API actions for City objects"""
 from api.v1.views import app_views
 from flask import jsonify, request, abort, Flask, make_response
 from models import storage
@@ -12,7 +12,7 @@ from models.review import Review
 
 @app_views.route('/places/<place_id>/reviews', strict_slashes=False)
 def get_Reviews_of_Place(place_id=None):
-    """Retrieves a list of all Review objs of a Place"""
+    """Retrieves a list of all Review objs of a Place."""
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
@@ -23,7 +23,7 @@ def get_Reviews_of_Place(place_id=None):
 @app_views.route('/reviews/<review_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
 def review_get_delete_put(review_id=None):
-    """Retrieves or deletes a Review object"""
+    """Retrieves or deletes a Review object."""
     review = storage.get(Review, review_id)
     if review is None:
         abort(404)
@@ -50,7 +50,7 @@ def review_get_delete_put(review_id=None):
 @app_views.route('/places/<place_id>/reviews', methods=['POST'],
                  strict_slashes=False)
 def review_post(place_id=None):
-    """creates a review"""
+    """Creates a review."""
     review_data = request.get_json()
     place = storage.get(Place, place_id)
     if place is None:
